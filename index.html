@@ -1,0 +1,124 @@
+
+<!DOCTYPE html>
+
+<html><head lang="en"><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+    <title>Multi-camera color correction</title>
+
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- <base href="/"> -->
+
+<!--     <link rel="apple-touch-icon" href="apple-touch-icon.png"> -->
+  <link rel="icon" type="image/png" href="img/lens-icon.png">
+    <!-- Place favicon.ico in the root directory -->
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.8.0/codemirror.min.css">
+    <link rel="stylesheet" href="css/app.css">
+
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-131406202-2"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-131406202-2');
+    </script>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.8.0/codemirror.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.5.3/clipboard.min.js"></script>
+    
+    <script src="js/app.js"></script>
+</head>
+
+<body>
+    <div class="container" id="main">
+        <div class="row">
+            <h1 class="col-md-12 text-center">
+                Multi-Camera Color Correction via Hybrid
+                    <br>Histogram Matching<br> 
+                <small>
+                    <a href="https://vision.nju.edu.cn/">
+                    Vision Lab, Nanjing University
+                    </a>
+                </small>
+            </h1>
+        </div>
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <ul class="list-inline">
+                    <li>
+                          Chunqiu Ding                  
+                    </li>
+                    <li>
+                        <a href="https://vision.nju.edu.cn/fc/d3/c29470a457939/page.htm">
+                          Zhan Ma
+                        </a>
+                    </li>                   
+                </ul>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <div align="center">
+                    <img src="images/before_cut.jpg" width="750"/>
+                </div>
+                <body align="center">
+                    (a) Raw images
+                </body><br>
+                <div align="center">
+                    <img src="images/correct_cut.jpg" width="750"/>
+                </div>
+                <body align="center">
+                    (b) Corrected images
+                </body>
+                <h3 align="center">
+                    Abstract
+                </h3>
+                <p class="text-justify" style="text-indent:2em;">
+                    With the explosive popularity of multi-camera systems, a challenging problem is how to guarantee the intercamera color consistency. In this paper, we have developed a hybrid histogram matching (HHM) algorithm that leverages the cumulative color histogram to fulfill this purpose, which mainly includes the global color mapping, and local color straightening for uniform color presentation across cameras. Our approach is applicable to any camera pair with sufficient viewing angle overlap, and can be easily extended to support multi-camera setup by pairwisely color map transfer. Our HHM have provided the superior efficiency for color correction when compared with the state-of-the-art algorithms, both objectively and subjectively, via extensive validations on different multi-camera systems. Additional ablation studies have been performed to further examine the capacity of our algorithm in practical applications.
+                </p>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2 text-center">
+                <h3>
+                    
+                </h3>
+                <ul class="nav nav-pills nav-justified">
+                    <li>
+                        <a href="#">
+                        <img src="images/mypaper.png" height="120px"><br>
+                            <h4><strong>Paper</strong></h4>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="http://yun.nju.edu.cn/d/cd5eda0e8b/">
+                        <img src="images/dataset_image.png" height="120px"><br>
+                            <h4><strong>Dataset</strong></h4>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                        <img src="images/图片2.jpg" height="120px"><br>
+                            <h4><strong>Code</strong></h4>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</body></html>
