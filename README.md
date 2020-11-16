@@ -1,11 +1,11 @@
 # Array camera color correction
-main.m   主函数,输入/6to7,演示两张图像的校正
+main.m   demo function of two images color correction, input:/6to7
 
-AHMpro.m    建模过程，input:两个重叠区域，output:map,(1X3X256)
+HHM.m    input:two overlaps, output:map,(1X3X256)
 
-PA.m   校正过程， input: map, 待校正图片， output:校正后图片
+PA.m    input: map, image to be corrected, output:image after correction
 
-Th.m   求阈值过程， input: 任意图片   output: 阈值Th(范围[0,255])
+Th.m   find threshode, input: an image   output: threshode Th([0,255])
 
 transform_ave: 输入/data,计算NxN个map,并根据平均map校正所有图像
 
