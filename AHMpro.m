@@ -1,14 +1,14 @@
-function [map] = AHMpro(im_tgt,im_src)
-%UNTITLED ´Ë´¦ÏÔÊ¾ÓĞ¹Ø´Ëº¯ÊıµÄÕªÒª
-%   ´Ë´¦ÏÔÊ¾ÏêÏ¸ËµÃ÷
+function [map] = HHM(im_tgt,im_src)
+%UNTITLED æ­¤å¤„æ˜¾ç¤ºæœ‰å…³æ­¤å‡½æ•°çš„æ‘˜è¦
+%   æ­¤å¤„æ˜¾ç¤ºè¯¦ç»†è¯´æ˜
     [H,W,~] = size(im_src);
     pixel_num = H*W; 
     im_tgt = imresize(im_tgt,[H W]);
     x = 1:256;
     %%
     %get pixel number
-    na = zeros(3,256);  %Ã¿¸öÁÁ¶ÈµÄÏñËØÊı  aÊÇtgt,  bÊÇsrc
-    Sa = zeros(3,256);  %»ı·Ö
+    na = zeros(3,256);  %æ¯ä¸ªäº®åº¦çš„åƒç´ æ•°  aæ˜¯tgt,  bæ˜¯src
+    Sa = zeros(3,256);  %ç§¯åˆ†
     nb = zeros(3,256);
     Sb = zeros(3,256);
     for c = 1:3
@@ -26,11 +26,11 @@ function [map] = AHMpro(im_tgt,im_src)
     %%
     %build map
     map = [x;x;x];
-    index = ones(3,256);   %index ¼ÇÂ¼ÀÛ¼ÆÖ±·½Í¼Ğ¡ÓÚãĞÖµµÄÇø¼ä£¬ÓÃ0±íÊ¾£¬·ñÔòindexÎª1
+    index = ones(3,256);   %index è®°å½•ç´¯è®¡ç›´æ–¹å›¾å°äºé˜ˆå€¼çš„åŒºé—´ï¼Œç”¨0è¡¨ç¤ºï¼Œå¦åˆ™indexä¸º1
     threshold_a = Th(na,pixel_num);
     threshold_b = Th(nb,pixel_num);
     for c = 1:3
-        gradient=zeros(c,257);   %¼ÇÂ¼ÓĞ¼¸¸ö¶ËµãÖµ
+        gradient=zeros(c,257);   %è®°å½•æœ‰å‡ ä¸ªç«¯ç‚¹å€¼
         srcMax = max(max(im_src(:,:,c)))+1;
         srcMin = min(min(im_src(:,:,c)))+1;
         for a = 1:256
@@ -38,7 +38,7 @@ function [map] = AHMpro(im_tgt,im_src)
             while Sa(c,a) > Sb(c,b)
                 b = b+1;
                 if b>srcMax
-                    b=srcMax;       %¸Ä³Ésrc×î´óÖµ
+                    b=srcMax;       %æ”¹æˆsrcæœ€å¤§å€¼
                     break
                 end
             end                
@@ -55,16 +55,16 @@ function [map] = AHMpro(im_tgt,im_src)
                 index(c,a)=0;
             end
         end
-        map(c,1)=srcMin;  %Éè¶¨¶ËµãÖµ
+        map(c,1)=srcMin;  %è®¾å®šç«¯ç‚¹å€¼
         map(c,256)=srcMax;
-        index(c,1)=1;     %±ê¼Ç0£¬256Á½¸öµãÎªÒÑÖªµã
+        index(c,1)=1;     %æ ‡è®°0ï¼Œ256ä¸¤ä¸ªç‚¹ä¸ºå·²çŸ¥ç‚¹
         index(c,256)=1;
     end
     gradient(:,2:256) = index(:,2:256)-index(:,1:255);
     gradient(:,1) = 0;
-    region = zeros(3,20,2);   %(Í¨µÀ£¬¿ÕÈ±ÇøÓòĞòºÅ£¬¿ªÊ¼/½áÊø£©
-    XX = zeros(3,20,2); %(Í¨µÀ£¬¿ÕÈ±ĞòºÅ£¬ÊµÏßÉÏÈı¸öµãºá×ø±ê£©
-    YY = zeros(3,20,2); %(Í¨µÀ£¬¿ÕÈ±ĞòºÅ£¬Èı¸öµã×İ×ø±ê£©
+    region = zeros(3,20,2);   %(é€šé“ï¼Œç©ºç¼ºåŒºåŸŸåºå·ï¼Œå¼€å§‹/ç»“æŸï¼‰
+    XX = zeros(3,20,2); %(é€šé“ï¼Œç©ºç¼ºåºå·ï¼Œå®çº¿ä¸Šä¸‰ä¸ªç‚¹æ¨ªåæ ‡ï¼‰
+    YY = zeros(3,20,2); %(é€šé“ï¼Œç©ºç¼ºåºå·ï¼Œä¸‰ä¸ªç‚¹çºµåæ ‡ï¼‰
     for c=1:3
         n_re = 0;
         for a = 1:256
