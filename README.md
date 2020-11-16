@@ -5,8 +5,8 @@ HHM.m    input:two overlaps, output:map,(1X3X256)
 
 PA.m    input: map, image to be corrected, output:image after correction
 
-Th.m   find threshode, input: an image   output: threshode Th([0,255])
+Th.m   find threshold, input: an image   output: threshold Th([0,255])
 
-transform_ave: 输入/data,计算NxN个map,并根据平均map校正所有图像
+transform_ave: input: /data, calculate NxN maps, and correcte all images using average_map
 
-/data:N 张图像以及它们的重叠区域 示例数据存储在data1.rar 和data2.rar
+/data:N images and their overlaps, example data is in data1.rar and data2.rar
