@@ -26,14 +26,14 @@ timeoverlap=zeros(100,100);
 maps = cell(N);
 for i=1:10
     maps{i,i} = [1:256;1:256;1:256];
-    % 向前变换
+    % å‘å‰å˜æ¢
     for j = i-1:-1:1
         tgt_path = fullfile(result_path,num2str(i),[num2str(j),'to',num2str(j+1),'.png']);
         src_path = fullfile(result_path,num2str(i),[num2str(j+1),'to',num2str(j),'.png']);
         tgt = imread(tgt_path);
         src = imread(src_path);
        
-        map = AHMpro(tgt,src);%% map�?要保�?
+        map = HHM(tgt,src);%% mapéœ?è¦ä¿å­?
         feature('memstats')
        
         %time(i,j)=toc;
@@ -49,17 +49,17 @@ for i=1:10
             imwrite(output,input_path);
         end
     end
-    % 向后变换
+    % å‘åŽå˜æ¢
     for j = i+1:N
         tgt_path = fullfile(result_path,num2str(i),[num2str(j),'to',num2str(j-1),'.png']);
         src_path = fullfile(result_path,num2str(i),[num2str(j-1),'to',num2str(j),'.png']);
         tgt = imread(tgt_path);
         src = imread(src_path);
        
-        map = AHMpro(tgt,src);%% map�?要保�?
+        map = HHM(tgt,src);%% mapéœ?è¦ä¿å­?
        
        % time(i,j)=toc;
-        maps{i,j} = map; %i:label相机, j:要矫正的相机
+        maps{i,j} = map; %i:labelç›¸æœº, j:è¦çŸ«æ­£çš„ç›¸æœº
         %
         if j <N
             input_path = fullfile(result_path,num2str(i),[num2str(j),'to',num2str(j+1),'.png']);
@@ -87,7 +87,7 @@ toc
 [user, sys] = memory ;
 mtotal = user.MemUsedMATLAB - mStart
 %% 
-% % 输出�?终结�?
+% % è¾“å‡ºæœ?ç»ˆç»“æž?
 % output_path = 'output_ave';
 % mkdir(output_path);
 % for i =1:N
